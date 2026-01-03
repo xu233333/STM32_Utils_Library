@@ -9,6 +9,10 @@
 
 #define DELAY_MS_FUNCTION vTaskDelay
 
+// #define DebugPin_Pin GPIO_PIN_13
+// #define DebugPin_GPIO_Port GPIOC
+// freeRTOS_WriteMorseCode(DebugPin_GPIO_Port, DebugPin_Pin, "Hello World!", GPIO_PIN_SET); 使用开漏输出的Pin 高电平时关闭 低电平时开启 输出Hello World!的摩斯码文本
+
 void freeRTOS_WriteMorseCode(GPIO_TypeDef* port, uint16_t pin, const char* text, GPIO_PinState closePinState)
 {
     HAL_GPIO_WritePin(port, pin, closePinState);
@@ -40,4 +44,5 @@ void freeRTOS_WriteMorseCode(GPIO_TypeDef* port, uint16_t pin, const char* text,
         vTaskDelay(MORSE_CODE_SPACE_LENGTH);
         NowPtr++;
     }
+
 }
